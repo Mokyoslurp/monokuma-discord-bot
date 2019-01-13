@@ -332,4 +332,4 @@ async def players(ctx):
     else :
         await client.say('Vous n\'êtes pas autorisé à utiliser cette commande')
 
-client.run((os.getenv('TOKEN'))
+client.run(os.getenv('TOKEN'))
