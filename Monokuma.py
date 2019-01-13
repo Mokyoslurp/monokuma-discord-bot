@@ -41,7 +41,7 @@ async def liftoff(ctx):
         chr = await client.send_message(channel, 'Chargement du prochain jeu de la mort...')
         message = ctx.message
         await client.delete_message(message)
-        msg = await client.send_file(channel, r'C:\Users\mokyo\Desktop\Monokuma\MonokuGifs\begin.gif', content='Pupupu bonjour @everyone, une fois de plus votre jeu de la mort favori ouvre ses portes! Cette nouvelle partie possèdera de nouvelles règles et accueillera {} joueurs. Vous pouvez déjà vous inscrire en cliquant sur le dé, ne vous poussez pas pour prendre vos places, je vous attends à l\'intérieur pupupu....'.format(nbJoueurs))
+        msg = await client.send_message(channel, 'Pupupu bonjour @everyone, une fois de plus votre jeu de la mort favori ouvre ses portes! Cette nouvelle partie possèdera de nouvelles règles et accueillera {} joueurs. Vous pouvez déjà vous inscrire en cliquant sur le dé, ne vous poussez pas pour prendre vos places, je vous attends à l\'intérieur pupupu....'.format(nbJoueurs))
         await client.delete_message(chr)
 
         await client.add_reaction(msg,'🎲')
