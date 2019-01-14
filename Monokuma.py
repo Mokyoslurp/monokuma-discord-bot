@@ -99,7 +99,7 @@ async def liftoff(ctx):
             await asyncio.sleep(1)
             chanPlayers[player.id] = player_chan.name
             players_chans.append(player_chan)
-         await client.send_message(ctx.message.author, chanPlayers)
+            await client.send_message(ctx.message.author, player_chan.name)
 
         participants_trash = list(nameParticipants)
         team = '1'
