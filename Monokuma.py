@@ -34,7 +34,7 @@ async def liftoff(ctx):
 
         await client.change_presence(game=discord.Game(name='préparer le prochain jeu'))
 
-        nbJoueurs = 6
+        nbJoueurs = 4
         waitForPlayers = 0
 
         channel=ctx.message.channel
@@ -99,6 +99,7 @@ async def liftoff(ctx):
             await asyncio.sleep(1)
             chanPlayers[player.id] = player_chan.name
             players_chans.append(player_chan)
+         await client.send_message(ctx.message.author, chanPlayers)
 
         participants_trash = list(nameParticipants)
         team = '1'
