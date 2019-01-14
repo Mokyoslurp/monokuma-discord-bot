@@ -69,8 +69,8 @@ async def liftoff(ctx):
         remainingSeconds = (21*60*60) - ((actualDate.hour*60*60) + (actualDate.minute*60))                      #Attente de 21h, le début de la partie et arrivée de tous les joueurs\ Point de départ en cas de plantage
         if actualDate.hour >= 21 :
             remainingSeconds += 24*60*60
-        await asyncio.sleep(remainingSeconds)
-        #await asyncio.sleep(10)
+        #wait asyncio.sleep(remainingSeconds)
+        await asyncio.sleep(10)
 
 
         role = await client.create_role(message.server, name = 'Participant', colour = discord.Colour(0xeb3136), create_instant_invite = False, send_tts_messages=False,change_nickname=False,embed_links=False,attach_files=False,mention_everyone=False)
