@@ -132,8 +132,8 @@ async def liftoff(ctx):
                 votes[joueur]=0
                 maxVote[joueur]=False
 
-            await asyncio.sleep(86400)
-            #await asyncio.sleep(60)
+            #await asyncio.sleep(86400)
+            await asyncio.sleep(3600)
 
             master_voted = None
             nbMaxVote = 0
@@ -290,7 +290,7 @@ async def eject(ctx, invited):
         await client.say('Tu nous fais quoi la {} ? Tu dois écrire ça sur ton salon privé !'.format(ctx.message.author.mention))
 
 @client.command(pass_context = True)
-async def clear(ctx, amount=10000):
+async def clear(ctx, amount=1):
     if ctx.message.channel.name == chanPlayers.get(ctx.message.author.id):
         channel=ctx.message.channel
         messages=[]
@@ -305,16 +305,17 @@ async def clear(ctx, amount=10000):
         await client.say('Tu nous fais quoi la {} ? Tu dois écrire ça sur ton salon privé !'.format(ctx.message.author.mention))
 
 @client.command(pass_context = True)
-async def backup(ctx, backup_name):
+async def backup(ctx, nbMessages = 1, backup_name = None):
     if ctx.message.channel.name == chanPlayers.get(ctx.message.author.id):
         channel=ctx.message.channel
         await client.delete_message(ctx.message)
         messages=[]
         messages_content=[]
-        async for message in client.logs_from(channel):
+        async for message in client.logs_from(channel, limit=int(nbMessages)):
             messages.append(message)
             messages_content.append(message.content)
-        await client.purge_from(channel)
+        await client.delete_messages(messages)
+        messages_content.reverse()
         await client.say('Tes messages ont été enregistrés sous "{}"'.format(backup_name))
         msg = await client.wait_for_message(content = '/load {}'.format(backup_name))
         for message in messages_content:
