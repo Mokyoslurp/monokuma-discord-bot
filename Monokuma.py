@@ -133,7 +133,7 @@ async def liftoff(ctx):
                 maxVote[joueur]=False
 
             #await asyncio.sleep(86400)
-            await asyncio.sleep(3600)
+            await asyncio.sleep(300)
 
             master_voted = None
             nbMaxVote = 0
